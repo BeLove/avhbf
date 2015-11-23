@@ -35,11 +35,11 @@ function compareResponses($non_exist, $test) { // return bool
 		// trust me, array_diff it a poor solution... we need hashmap
 		// create hashmap
 		foreach($test_linebyline as $line) {
-			$test_hashmap[md5($line)] = '';
+			$test_hashmap[md5(trim($line))] = '';
 		}
 		$lines = '';
 		foreach($non_exist_linebyline as $line) {
-			if (!array_key_exists(md5($line), $test_hashmap)) {
+			if (!array_key_exists(md5(trim($line)), $test_hashmap)) {
 				$lines_non_matched++;
 				//$lines .= $line." - ".md5($line)."\n"; // / uncomment this if you want to see diff between non-exist and testing domains
 			}
